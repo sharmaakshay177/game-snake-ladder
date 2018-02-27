@@ -1,21 +1,13 @@
 package snakeLadd;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 public class Main {
 
-	
-	
-	
-	
 	public static void main(String[] args) {
-		Board b1 = new Board();
-		
-	 
-		//System.out.println("dice count "+(getdice()+1));
-		HashMap<Integer, Integer>ladder = new HashMap<Integer,Integer>();
-		ladder.p
+	Board b1 = new Board();
+	b1.startGame();
 	}
 
 }//main class containing main method
@@ -83,7 +75,54 @@ class Board{
 	public boolean isWin(int player)
 	{
 		return winPoint == player;
-	}
+	} //ending of iswin
+	
+	public void startGame()
+	{
+	   int player1 =0 , player2 = 0;
+	   int curPlay =-1;
+	   Scanner in = new Scanner(System.in);
+	   String str = "";
+	   int diceVal =0;
+	   
+	   do {
+		   System.out.println(curPlay == -1 ?"\nFirst player Turn":"\n Second Player Turn");
+		   System.out.println("Press r to Roll dice");
+		   str = in.next();
+		   diceVal = getdice();
+		   if(curPlay == -1)
+		   {
+			   player1 = calculateplayervalue(player1,diceVal);
+	            System.out.println("First Player :: " + player1);
+	            System.out.println("Second Player :: " + player2);
+	            System.out.println("------------------");
+	            if(isWin(player1))
+	            {
+	                System.out.println("First player wins");
+	                return;
+	            } 
+	            else
+	            {
+	                player2 = calculateplayervalue(player2,diceVal);
+	                System.out.println("First Player :: " + player1);
+	                System.out.println("Second Player :: " + player2);
+	                System.out.println("------------------");
+	                if(isWin(player2))
+	                {
+	                    System.out.println("Second player wins");
+	                    return;
+	                }
+	            }
+	              
+	            curPlay= -curPlay;
+			   
+		   }
+		   
+		   
+	   }while("r".equals(str));
+		
+		
+	}//ending of start game function
 	
 	
 	
