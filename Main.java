@@ -100,8 +100,9 @@ class Board{
 	            {
 	                System.out.println("First player wins");
 	                return;
-	            } 
-	            else
+	            }
+		   } 
+	         else
 	            {
 	                player2 = calculateplayervalue(player2,diceVal);
 	                System.out.println("First Player :: " + player1);
@@ -116,7 +117,7 @@ class Board{
 	              
 	            curPlay= -curPlay;
 			   
-		   }
+		   
 		   
 		   
 	   }while("r".equals(str));
